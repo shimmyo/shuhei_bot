@@ -54,6 +54,11 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
 
   # example for shell execution
 
+#  robot.respond /debug/, (msg) ->
+#    console.log msg
+#    console.log msg.message
+#    console.log msg.message.user
+
   IRKIT_MESSAGE_API = "http://api.getirkit.com/1/messages/"
   IRKIT_CLIENT_KEY = process.env.HUBOT_IRKIT_CLIENT_KEY
   IRKIT_DEVICE_ID = process.env.HUBOT_IRKIT_DEVICE_ID
@@ -278,4 +283,48 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       null
     , () ->
       robot.send {room: "#general"}, "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
+      robot.send {room: "#sabikai_general"}, "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
+  , null, true, "Asia/Tokyo"
+
+  new cron '00 35 06 * * 0-6', () ->
+    robot.http(IRKIT_MESSAGE_API)
+      .query({
+        clientkey: IRKIT_CLIENT_KEY
+        deviceid: IRKIT_DEVICE_ID
+        message: AIRCON_ON})
+      .post() (err, res, body) ->
+        robot.send {room: "k-fujii"}, "ぼちぼち朝だし、エアコンつけておいたよ。"
+  , null, true, "Asia/Tokyo"
+
+  new cron '00 00 19 * * 0-6', () ->
+    robot.http(IRKIT_MESSAGE_API)
+      .query({
+        clientkey: IRKIT_CLIENT_KEY
+        deviceid: IRKIT_DEVICE_ID
+        message: AIRCON_ON})
+      .post() (err, res, body) ->
+        robot.send {room: "k-fujii"}, "そろそろ帰る時間かと思って、エアコンつけたよ。"
+  , null, true, "Asia/Tokyo"
+
+  new cron '00 00 08 * * 1-5', () ->
+    isHoliday () ->
+      null
+    , () ->
+      robot.http(IRKIT_MESSAGE_API)
+        .query({
+          clientkey: IRKIT_CLIENT_KEY
+          deviceid: IRKIT_DEVICE_ID
+          message: AIRCON_OFF})
+        .post() (err, res, body) ->
+          robot.send {room: "k-fujii"}, "エアコン切ったぞ。そろそろ会社いけよ。"
+  , null, true, "Asia/Tokyo"
+
+  new cron '00 30 23 * * 0-6', () ->
+    robot.http(IRKIT_MESSAGE_API)
+      .query({
+        clientkey: IRKIT_CLIENT_KEY
+        deviceid: IRKIT_DEVICE_ID
+        message: AIRCON_OFF})
+      .post() (err, res, body) ->
+        robot.send {room: "k-fujii"}, "ぼちぼち寝ろ。エアコン切ったぞー。"
   , null, true, "Asia/Tokyo"
