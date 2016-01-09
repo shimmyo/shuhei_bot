@@ -73,23 +73,23 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       deviceid: IRKIT_DEVICE_ID
       message: json})
     .post() (err, res, body) ->
-      msg.send output
+      msg.reply output
 
   robot.respond /aircon (on|off)/, (msg) ->
     if msg.message.user.name is 'k-fujii'
       sw = msg.match[1]
       if sw is "on"
-        postIRKit msg, AIRCON_ON, "@k-fujii エアコン付けといたよ"
+        postIRKit msg, AIRCON_ON, "エアコン付けといたよ"
       else
-        postIRKit msg, AIRCON_OFF, "@k-fujii エアコン消しといたよ"
+        postIRKit msg, AIRCON_OFF, "エアコン消しといたよ"
     else
-      msg.send "すみません、これは @k-fujii 用の機能なんですよ。"
+      msg.reply "Sorry, this command is only for k-fujii."
 
   robot.respond /tv power/, (msg) ->
     if msg.message.user.name is 'k-fujii'
-      postIRKit msg, TV_POWER, "テレビの電源ボタン押しちゃった"
+      postIRKit msg, TV_POWER, "テレビの電源ボタン押しちゃったわ"
     else
-      msg.send "すみません、これは @k-fujii 用の機能なんですよ。"
+      msg.reply "Sorry, this command is only for k-fujii."
 
   robot.respond /ping(.*)/, (msg) ->
     if msg.match[1].length < 1
