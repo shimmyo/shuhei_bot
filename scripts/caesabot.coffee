@@ -1,5 +1,5 @@
 # Description:
-#   Yamada bot helps to enjoy slack life
+#   caesabot helps to enjoy slack life
 #
 # Dependencies:
 #   $ npm install
@@ -7,19 +7,21 @@
 # Configuration:
 #   You need to set following environment variables
 #     HUBOT_SLACK_TOKEN
+#     HUBOT_IRKIT_CLIENT_KEY
+#     HUBOT_IRKIT_DEVICE_ID
 #
 # Commands:
-#   caesabot help          -- Display this help
-#   caesabot ping          -- Check whether a bot is alive
-#   caesabot weather       -- Ask today's weather
-#   caesabot yahoo-news    -- Display current yahoo news highlight
-#   caesabot kindle        -- Display daily kindle sale book
-#   caesabot train         -- Display train status
-#   caesabot say [SOMETHING]       -- Yamada-bot say SOMETHING in #general
-#   caesabot ping [IPADDR]         -- Execute ping [IPADDR] from bot
-#   caesabot traceroute [IPADDR]   -- Execute traceroute [IPADDR] from bot
-#   caesabot whois [IPADDR]        -- Execute whois [IPADDR]
-#   caesabot vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
+#   sarubo help          -- Display this help
+#   sarubo ping          -- Check whether a bot is alive
+#   sarubo weather       -- Ask today's weather
+#   sarubo yahoo-news    -- Display current yahoo news highlight
+#   sarubo kindle        -- Display daily kindle sale book
+#   sarubo train         -- Display train status
+#   sarubo say [SOMETHING]       -- Yamada-bot say SOMETHING in #general
+#   sarubo ping [IPADDR]         -- Execute ping [IPADDR] from bot
+#   sarubo traceroute [IPADDR]   -- Execute traceroute [IPADDR] from bot
+#   sarubo whois [IPADDR]        -- Execute whois [IPADDR]
+#   sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
 #
 # Author:
 #   noralife
@@ -36,22 +38,54 @@ module.exports = (robot) ->
   robot.respond /help/i, (res) ->
     res.send '''
 ```
-caesabot help          -- Display this help
-caesabot ping          -- Check whether a bot is alive
-caesabot weather       -- Ask today's weather
-caesabot yahoo-news    -- Display current yahoo news highlight
-caesabot kindle        -- Display daily kindle sale book
-caesabot train         -- Display train status
-caesabot say [SOMETHING]       -- Yamada-bot say SOMETHING in general
-caesabot emotion [SOMETHING]   -- Analyze [SOMETHING] using emotion API
-caesabot ping [IPADDR]         -- Execute ping [IPADDR] from bot server
-caesabot traceroute [IPADDR]   -- Execute traceroute [IPADDR] from bot server
-caesabot whois [IPADDR]        -- Execute whois [IPADDR]
-caesabot vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
+sarubo help          -- Display this help
+sarubo ping          -- Check whether a bot is alive
+sarubo weather       -- Ask today's weather
+sarubo yahoo-news    -- Display current yahoo news highlight
+sarubo kindle        -- Display daily kindle sale book
+sarubo train         -- Display train status
+sarubo emotion [SOMETHING]   -- Analyze [SOMETHING] using emotion API
+sarubo ping [IPADDR]         -- Execute ping [IPADDR] from bot server
+sarubo traceroute [IPADDR]   -- Execute traceroute [IPADDR] from bot server
+sarubo whois [IPADDR]        -- Execute whois [IPADDR]
+sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
 ```
               '''
 
   # example for shell execution
+
+  IRKIT_MESSAGE_API = "http://api.getirkit.com/1/messages/"
+  IRKIT_CLIENT_KEY = process.env.HUBOT_IRKIT_CLIENT_KEY
+  IRKIT_DEVICE_ID = process.env.HUBOT_IRKIT_DEVICE_ID
+  TV_POWER = '{"format":"raw","freq":38,"data":[4713,1190,2368,1150,1150,1150,2368,1150,1150,1150,2368,1150,1150,1150,1150,1150,2368,1150,1150,1150,1150,1150,1150,1150,1150,50610,4713,1150,2368,1150,1150,1150,2368,1150,1150,1150,2368,1150,1150,1150,1150,1150,2368,1150,1150,1150,1150,1150,1150,1150,1150,50610,4713,1150,2368,1150,1150,1150,2368,1150,1150,1150,2368,1150,1150,1150,1150,1150,2368,1150,1150,1150,1150,1150,1150,1150,1150,50610,4713,1150,2368,1150,1150,1150,2368,1150,1150,1150,2368,1150,1150,1150,1150,1150,2368,1150,1150,1150,1150,1150,1150,1150,1150,50610,4713,1150,2368,1150,1150,1150,2368,1150,1150,1150,2368,1150,1150,1150,1150,1150,2368,1150,1150,1150,1150,1150,1150,1150,1150]}'
+  AIRCON_ON = '{"format":"raw","freq":38,"data":[6648,3341,843,2451,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,2451,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,2451,843,843,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,843,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,2451,843,2451,843,843,843,843,843,2451,843,2451,843,2451,843,2451,843,843,843,843,843,2451,843,2451,843,843,843,843,843,843,843,2451,843,843,843,843,843,2451,843,843,843,843,843,2451,843,2451,843,843,843,2451,843,2451,843,843,843,2451,843,2451,843,843,843,2451,843,2451,843,843,843,843,843,2451,843,843,843,843,843,843,843,843,843,843,843,2451,843,2451,843,843,843,2451,843,2451,843,2451,843,843,843,843,843,2451,843,843,843,2451,843,843,843,2451,843,843,843,2451,843,2451,843,843,843,2451,843,843,843,2451,843,843,843,2451,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,2451,815,2451,815,815,815,2451,815,815,815,2451,815,815,815,2451,815,815,815,815,815,2451,815,815,815,2451,815,815,815,2451,815,2451,815,815,815,815,815,815,815,2451,815,815,815,2451,815,2451,815,815,815,2451,815,2451,815,2451,815,815,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873]}'
+  AIRCON_OFF = '{"format":"raw","freq":38,"data":[6648,3341,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,2451,873,2451,873,787,873,787,873,787,873,2451,873,787,873,787,873,2451,873,787,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,787,873,787,873,2451,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,2451,873,787,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,2451,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873]}'
+
+  postIRKit = (msg, json, output) ->
+    msg.http(IRKIT_MESSAGE_API)
+    .query({
+      clientkey: IRKIT_CLIENT_KEY
+      deviceid: IRKIT_DEVICE_ID
+      message: json})
+    .post() (err, res, body) ->
+      msg.send output
+
+  robot.respond /aircon (on|off)/, (msg) ->
+    if msg.message.user.name is 'k-fujii'
+      sw = msg.match[1]
+      if sw is "on"
+        postIRKit msg, AIRCON_ON, "エアコン付けといたよ"
+      else
+        postIRKit msg, AIRCON_OFF, "エアコン消しといたよ"
+    else
+      msg.send "すみません、これは @k-fujii 用の機能なんですよ。"
+
+  robot.respond /tv power/, (msg) ->
+    if msg.message.user.name is 'k-fujii'
+      postIRKit msg, TV_POWER, "テレビの電源ボタン押しちゃった"
+    else
+      msg.send "すみません、これは @k-fujii 用の機能なんですよ。"
+
   robot.respond /ping(.*)/, (msg) ->
     if msg.match[1].length < 1
       msg.send "PONG"
@@ -145,7 +179,7 @@ caesabot vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
   robot.respond /weather/i, (msg) ->
     getWeather (weathers) ->
       console.log(weathers)
-      message = "今日の天気は#{weathers[0]['telop']}ってとこですね。"
+      message = "今日の天気は#{weathers[0]['telop']}ですね。"
       message += "最高気温は#{weathers[0]['maxtemp']}度だそうです。" if weathers[0]['maxtemp']?
       message += "\nちなみに明日は#{weathers[1]['telop']}になるみたいですよ。"
       msg.send message
@@ -153,7 +187,7 @@ caesabot vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
   # example for scraping
   robot.respond /yahoo-news/i, (msg) ->
     getYahooNews (items) ->
-      msg.send "Yahoo Newsですか？どうぞ。詳細はご自分でチェックしてくださいね。"
+      msg.send "Yahoo Newsですか？どうぞ。詳細は自分でチェックしてくださいね。"
       for item in items
         msg.send "・#{item}"
 
@@ -243,5 +277,5 @@ caesabot vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
     isHoliday () ->
       null
     , () ->
-      robot.send {room: "#general"}, "今日は金曜日ですし、そろそろ帰りましょうよ。よい週末を！"
+      robot.send {room: "#general"}, "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
   , null, true, "Asia/Tokyo"
