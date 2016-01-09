@@ -74,9 +74,9 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
     if msg.message.user.name is 'k-fujii'
       sw = msg.match[1]
       if sw is "on"
-        postIRKit msg, AIRCON_ON, "エアコン付けといたよ"
+        postIRKit msg, AIRCON_ON, "@k-fujii エアコン付けといたよ"
       else
-        postIRKit msg, AIRCON_OFF, "エアコン消しといたよ"
+        postIRKit msg, AIRCON_OFF, "@k-fujii エアコン消しといたよ"
     else
       msg.send "すみません、これは @k-fujii 用の機能なんですよ。"
 
