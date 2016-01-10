@@ -286,7 +286,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       robot.send {room: "#sabikai_general"}, "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
   , null, true, "Asia/Tokyo"
 
-  new cron '00 35 06 * * 0-6', () ->
+  new cron '00 45 06 * * 0-6', () ->
     robot.http(IRKIT_MESSAGE_API)
       .query({
         clientkey: IRKIT_CLIENT_KEY
@@ -319,12 +319,25 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
           robot.send {room: "k-fujii"}, "エアコン切ったぞ。そろそろ会社いけよ。"
   , null, true, "Asia/Tokyo"
 
-  new cron '00 30 23 * * 0-6', () ->
+  new cron '00 30 12 * * 0-6', () ->
+    isHoliday () ->
+      robot.http(IRKIT_MESSAGE_API)
+        .query({
+          clientkey: IRKIT_CLIENT_KEY
+          deviceid: IRKIT_DEVICE_ID
+          message: AIRCON_OFF})
+        .post() (err, res, body) ->
+          robot.send {room: "k-fujii"}, "外出たら？エアコン切ったからな。"
+    , () ->
+      null
+  , null, true, "Asia/Tokyo"
+
+  new cron '00 45 23 * * 0-6', () ->
     robot.http(IRKIT_MESSAGE_API)
       .query({
         clientkey: IRKIT_CLIENT_KEY
         deviceid: IRKIT_DEVICE_ID
         message: AIRCON_OFF})
       .post() (err, res, body) ->
-        robot.send {room: "k-fujii"}, "ぼちぼち寝ろ。エアコン切ったぞー。"
+        robot.send {room: "k-fujii"}, "ぼちぼち寝ろ。エアコン切ったぞ。"
   , null, true, "Asia/Tokyo"
