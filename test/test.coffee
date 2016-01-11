@@ -12,7 +12,7 @@ describe 'ping', ->
     robot = new Robot(null, 'mock-adapter', false, 'hubot')
 
     robot.adapter.on 'connected', ->
-      require('../scripts/yamada')(robot)
+      require('../scripts/caesabot')(robot)
       user = robot.brain.userForId '1',
         name: 'mocha'
         room: '#mocha'
