@@ -344,7 +344,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
         robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ帰る時間かと思って、エアコンつけたよ。"
   , null, true, "Asia/Tokyo"
 
-  new cron '00 00 08 * * 1-5', () ->
+  new cron '00 15 08 * * 1-5', () ->
     isHoliday () ->
       null
     , () ->
