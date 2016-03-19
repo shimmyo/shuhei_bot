@@ -358,25 +358,11 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
         .post() (err, res, body) ->
           robot.send {room: "#{IRKIT_OWNER_01}"}, "ぼちぼち朝だし、エアコンつけておいたよ。"
     , () ->
-      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日は暑すぎるね。"
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日は暑すぎるからクーラーつけとくわ。"
     , () ->
-      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコンは必要ないみたいだね。"
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコン必要ないみたいだね。"
   , null, true, "Asia/Tokyo"
 
-  new cron '00 45 02 * * 0-6', () ->
-    getTemperature () ->
-      robot.http(IRKIT_MESSAGE_API)
-        .query({
-          clientkey: IRKIT_CLIENT_KEY
-          deviceid: IRKIT_DEVICE_ID
-          message: AIRCON_ON})
-        .post() (err, res, body) ->
-          robot.send {room: "#{IRKIT_OWNER_01}"}, "ぼちぼち朝だし、エアコンつけておいたよ。"
-    , () ->
-      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日は暑すぎるね。"
-    , () ->
-      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコンは必要ないみたいだね。"
-  , null, true, "Asia/Tokyo"
 
   new cron '00 30 19 * * 0-6', () ->
     getTemperature () ->
@@ -388,9 +374,9 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
         .post() (err, res, body) ->
           robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ帰る頃かと思って、エアコンつけておいたよ。"
     , () ->
-      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日は暑すぎるね。"
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日は暑すぎるからクーラーつけとくわ。"
     , () ->
-      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコンは必要ないみたいだね。"
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコン必要ないみたいだね。"
   , null, true, "Asia/Tokyo"
 
   new cron '00 15 08 * * 1-5', () ->
