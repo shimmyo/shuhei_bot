@@ -232,7 +232,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
     }
     request.get options, (error, response, json) ->
       if !error && response.statusCode == 200
-        currentTemp = json.main.temp - 273.15
+        currentTemp = Math.round((json.main.temp - 273.15)*10) / 10
         callback(currentTemp)
       else
         console.log('error: '+ response.statusCode)
@@ -248,7 +248,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
 
   robot.respond /temp/i, (msg) ->
     getCurrentTemp (currentTemp) ->
-      msg.send "今の東京の気温は「#{currentTemp}」です。"
+      msg.send "今の東京の気温は、#{currentTemp}℃です。"
 
   # example for scraping
   robot.respond /yahoo-news/i, (msg) ->
@@ -363,7 +363,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコンは必要ないみたいだね。"
   , null, true, "Asia/Tokyo"
 
-  new cron '00 15 02 * * 0-6', () ->
+  new cron '00 45 02 * * 0-6', () ->
     getTemperature () ->
       robot.http(IRKIT_MESSAGE_API)
         .query({
