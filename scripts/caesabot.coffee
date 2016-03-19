@@ -10,6 +10,7 @@
 #     HUBOT_IRKIT_CLIENT_KEY
 #     HUBOT_IRKIT_DEVICE_ID
 #     HUBOT_IRKIT_OWNER_01
+#     HUBOT_TEMPERATURE_API_KEY
 #
 # Commands:
 #   sarubo help          -- Display this help
@@ -73,6 +74,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
   TV_MX = '{"format":"raw","freq":38,"data":[4713,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,1190,52381,4713,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,1190,52381,4713,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,1190,52381,4713,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,1190,52381,4713,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,2368,1190,1190,1190,1190,1190,1190,1190,1190]}'
   AIRCON_ON = '{"format":"raw","freq":38,"data":[6648,3341,843,2451,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,2451,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,2451,843,843,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,843,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,2451,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,2451,843,2451,843,843,843,843,843,2451,843,2451,843,2451,843,2451,843,843,843,843,843,2451,843,2451,843,843,843,843,843,843,843,2451,843,843,843,843,843,2451,843,843,843,843,843,2451,843,2451,843,843,843,2451,843,2451,843,843,843,2451,843,2451,843,843,843,2451,843,2451,843,843,843,843,843,2451,843,843,843,843,843,843,843,843,843,843,843,2451,843,2451,843,843,843,2451,843,2451,843,2451,843,843,843,843,843,2451,843,843,843,2451,843,843,843,2451,843,843,843,2451,843,2451,843,843,843,2451,843,843,843,2451,843,843,843,2451,843,843,843,843,843,843,843,843,843,843,843,843,843,843,843,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,2451,815,2451,815,815,815,2451,815,815,815,2451,815,815,815,2451,815,815,815,815,815,2451,815,815,815,2451,815,815,815,2451,815,2451,815,815,815,815,815,815,815,2451,815,815,815,2451,815,2451,815,815,815,2451,815,2451,815,2451,815,815,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,2451,815,815,815,815,815,815,815,815,815,815,815,815,815,815,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873]}'
   AIRCON_OFF = '{"format":"raw","freq":38,"data":[6648,3341,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,2451,873,2451,873,787,873,787,873,787,873,2451,873,787,873,787,873,2451,873,787,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,787,873,787,873,2451,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,2451,873,787,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,2451,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,787,873,787,873,2451,873,787,873,2451,873,787,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,787,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873,2451,873]}'
+
 
   postIRKit = (msg, json, output) ->
     msg.http(IRKIT_MESSAGE_API)
@@ -204,6 +206,37 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       else
         elseCallback()
 
+  getTemperature = (tooColdCallback, tooHotCallback, normalTempCallback) ->
+    apikey = process.env.HUBOT_TEMPERATURE_API_KEY
+    options = {
+      url: 'http://api.openweathermap.org/data/2.5/weather?id=1850147&appid=' + apikey,
+      json: true
+    }
+    request.get options, (error, response, json) ->
+      if !error && response.statusCode == 200
+        currentTemp = json.main.temp - 273.15
+        if currentTemp < 10
+          tooColdCallback(currentTemp)
+        else if currentTemp >= 30
+          tooHotCallback(currentTemp)
+        else
+          normalTempCallback(currentTemp)
+      else
+        console.log('error: '+ response.statusCode)
+
+  getCurrentTemp = (callback) ->
+    apikey = process.env.HUBOT_TEMPERATURE_API_KEY
+    options = {
+      url: 'http://api.openweathermap.org/data/2.5/weather?id=1850147&appid=' + apikey,
+      json: true
+    }
+    request.get options, (error, response, json) ->
+      if !error && response.statusCode == 200
+        currentTemp = json.main.temp - 273.15
+        callback(currentTemp)
+      else
+        console.log('error: '+ response.statusCode)
+
   # example for calling API
   robot.respond /weather/i, (msg) ->
     getWeather (weathers) ->
@@ -212,6 +245,10 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       message += "最高気温は#{weathers[0]['maxtemp']}度だそうです。" if weathers[0]['maxtemp']?
       message += "\nちなみに明日は#{weathers[1]['telop']}になるみたいですよ。"
       msg.send message
+
+  robot.respond /temp/i, (msg) ->
+    getCurrentTemp (currentTemp) ->
+      msg.send "今の東京の気温は「#{currentTemp}」です。"
 
   # example for scraping
   robot.respond /yahoo-news/i, (msg) ->
@@ -235,18 +272,6 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
           msg.send "・#{train}"
       else
         msg.send "遅延は特にないようです。"
-
-  robot.respond /emotion (.*)/i, (msg) ->
-    text = msg.match[1].trim()
-    apikey = process.env.METADATA_API_KEY
-    options = {
-      url: 'http://ap.mextractr.net/ma9/emotion_analyzer?out=json&text=' + text + '&apikey=' + apikey,
-      json: true
-    }
-    request.get options, (error, response, json) ->
-      if !error && response.statusCode == 200
-        json.analyzed_text = decodeURI(json.analyzed_text)
-        msg.send("```\n" + JSON.stringify(json, null, "\t") + "\n```")
 
   addReaction = (name, ch, ts, callback) ->
     options = {
@@ -321,27 +346,51 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       null
     , () ->
       robot.send {room: "#general"}, "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
-      robot.send {room: "#sabikai_general"}, "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
   , null, true, "Asia/Tokyo"
 
   new cron '00 45 06 * * 0-6', () ->
-    robot.http(IRKIT_MESSAGE_API)
-      .query({
-        clientkey: IRKIT_CLIENT_KEY
-        deviceid: IRKIT_DEVICE_ID
-        message: AIRCON_ON})
-      .post() (err, res, body) ->
-        robot.send {room: "#{IRKIT_OWNER_01}"}, "ぼちぼち朝だし、エアコンつけておいたよ。"
+    getTemperature () ->
+      robot.http(IRKIT_MESSAGE_API)
+        .query({
+          clientkey: IRKIT_CLIENT_KEY
+          deviceid: IRKIT_DEVICE_ID
+          message: AIRCON_ON})
+        .post() (err, res, body) ->
+          robot.send {room: "#{IRKIT_OWNER_01}"}, "ぼちぼち朝だし、エアコンつけておいたよ。"
+    , () ->
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日は暑すぎるね。"
+    , () ->
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコンは必要ないみたいだね。"
   , null, true, "Asia/Tokyo"
 
-  new cron '00 00 19 * * 0-6', () ->
-    robot.http(IRKIT_MESSAGE_API)
-      .query({
-        clientkey: IRKIT_CLIENT_KEY
-        deviceid: IRKIT_DEVICE_ID
-        message: AIRCON_ON})
-      .post() (err, res, body) ->
-        robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ帰る時間かと思って、エアコンつけたよ。"
+  new cron '00 15 02 * * 0-6', () ->
+    getTemperature () ->
+      robot.http(IRKIT_MESSAGE_API)
+        .query({
+          clientkey: IRKIT_CLIENT_KEY
+          deviceid: IRKIT_DEVICE_ID
+          message: AIRCON_ON})
+        .post() (err, res, body) ->
+          robot.send {room: "#{IRKIT_OWNER_01}"}, "ぼちぼち朝だし、エアコンつけておいたよ。"
+    , () ->
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日は暑すぎるね。"
+    , () ->
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコンは必要ないみたいだね。"
+  , null, true, "Asia/Tokyo"
+
+  new cron '00 30 19 * * 0-6', () ->
+    getTemperature () ->
+      robot.http(IRKIT_MESSAGE_API)
+        .query({
+          clientkey: IRKIT_CLIENT_KEY
+          deviceid: IRKIT_DEVICE_ID
+          message: AIRCON_ON})
+        .post() (err, res, body) ->
+          robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ帰る頃かと思って、エアコンつけておいたよ。"
+    , () ->
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日は暑すぎるね。"
+    , () ->
+      robot.send {room: "#{IRKIT_OWNER_01}"}, "今日はエアコンは必要ないみたいだね。"
   , null, true, "Asia/Tokyo"
 
   new cron '00 15 08 * * 1-5', () ->
@@ -354,7 +403,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
           deviceid: IRKIT_DEVICE_ID
           message: AIRCON_OFF})
         .post() (err, res, body) ->
-          robot.send {room: "#{IRKIT_OWNER_01}"}, "エアコン切ったぞ。そろそろ会社いけよ。"
+          robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ会社いく時間だぞ。早く出なよ。"
   , null, true, "Asia/Tokyo"
 
   new cron '00 30 12 * * 0-6', () ->
@@ -365,7 +414,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
           deviceid: IRKIT_DEVICE_ID
           message: AIRCON_OFF})
         .post() (err, res, body) ->
-          robot.send {room: "#{IRKIT_OWNER_01}"}, "外出たら？エアコン切ったからな。"
+          robot.send {room: "#{IRKIT_OWNER_01}"}, "休みとは言え、少しは外に出たら？"
     , () ->
       null
   , null, true, "Asia/Tokyo"
@@ -377,5 +426,5 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
         deviceid: IRKIT_DEVICE_ID
         message: AIRCON_OFF})
       .post() (err, res, body) ->
-        robot.send {room: "#{IRKIT_OWNER_01}"}, "ぼちぼち寝ろ。エアコン切ったぞ。"
+        robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ寝た方がよくない？おやすみ！"
   , null, true, "Asia/Tokyo"
