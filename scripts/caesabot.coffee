@@ -103,7 +103,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       else
         msg.reply "Sorry, this command is only for <@#{IRKIT_OWNER_01}>."
     else
-      null
+      msg.reply "今はそれ使えないわ"
 
   robot.respond /tv (power|nhk|tbs|tokyo|asahi|fuji|mx|.*)/, (msg) ->
     if msg.message.user.name is IRKIT_OWNER_01
