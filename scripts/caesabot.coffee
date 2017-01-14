@@ -97,7 +97,7 @@ sarubo vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
         else if sw is "dry"
           postIRKit msg, AIRCON_DRY, "除湿モードでエアコンつけたよ"
         else if sw is "hot"
-          postIRKit msg, AIRCON_DRY, "暖房モードでエアコンつけたよ"
+          postIRKit msg, AIRCON_HOT, "暖房モードでエアコンつけたよ"
         else if sw is "off"
           postIRKit msg, AIRCON_OFF, "エアコン消しといたよ"
         else
