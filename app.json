@@ -1,0 +1,29 @@
+{
+  "name": "shuhei_bot",
+  "scripts": {
+  },
+  "env": {
+    "HUBOT_HEROKU_KEEPALIVE_URL": {
+      "required": true
+    },
+    "HUBOT_SLACK_TOKEN": {
+      "required": true
+    },
+    "REDISTOGO_URL": {
+      "required": true
+    },
+    "TZ": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "redistogo"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
