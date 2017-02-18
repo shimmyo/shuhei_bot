@@ -30,7 +30,7 @@
 #   noralife
 #  bin/hubot --adapter slack　これでbotとslackを連携させる
 
-cheerio = require('cheerio')
+#cheerio = require('cheerio')
 cheerio-httpcli = require('cheerio-httpcli')
 cron = require('cron').CronJob
 request = require('request')
