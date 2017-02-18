@@ -20,7 +20,8 @@
     "hubot-slack": "^4.3.2",
     "cheerio-httpcli": "^0.6.11",
     "cheerio": "^0.22.0",
-    "cron": "^1.2.1"
+    "cron": "^1.2.1",
+    "request": "^2.79.0"
   },
   "engines": {
     "node": "0.10.x"
