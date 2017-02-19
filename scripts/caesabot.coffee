@@ -375,7 +375,7 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
  #     robot.send {room: "#general"}, "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
  # , null, true, "Asia/Tokyo"
 
-  new cron '00 30 06 * * 0-6', () ->
+  new cron '00 00 07 * * 0-6', () ->
     if AIRCON_FUNC is "on"
       getTemperature () ->
         #tooColdCallback
@@ -383,18 +383,18 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
           .query({
             clientkey: IRKIT_CLIENT_KEY
             deviceid: IRKIT_DEVICE_ID
-            message: AIRCON_HOT})
+            message: LIGHT_ON})
           .post() (err, res, body) ->
-            robot.send {room: "#{IRKIT_OWNER_01}"}, "暖房いれておいたよ"
+            robot.send {room: "#{IRKIT_OWNER_01}"}, "おはようございます"
       , () ->
         #tooHotCallback
         robot.http(IRKIT_MESSAGE_API)
           .query({
             clientkey: IRKIT_CLIENT_KEY
             deviceid: IRKIT_DEVICE_ID
-            message: AIRCON_COLD})
+            message: LIGHT_ON})
           .post() (err, res, body) ->
-            robot.send {room: "#{IRKIT_OWNER_01}"}, "冷房いれておいたよ"
+            robot.send {room: "#{IRKIT_OWNER_01}"}, "おはようございます"
       , () ->
         #normalTempCallback
         null
@@ -403,35 +403,35 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
   , null, true, "Asia/Tokyo"
 
 
-  new cron '00 00 20 * * 0-6', () ->
-    if AIRCON_FUNC is "on"
-      getTemperature () ->
-        #tooColdCallback
-        robot.http(IRKIT_MESSAGE_API)
-          .query({
-            clientkey: IRKIT_CLIENT_KEY
-            deviceid: IRKIT_DEVICE_ID
-            message: AIRCON_HOT, LIGHT_OFF,})
-          .post() (err, res, body) ->
-            robot.send {room: "#{IRKIT_OWNER_01}"}, "暖房いれておいたよ"
-		  
-      , () ->
-        #tooHotCallback
-        robot.http(IRKIT_MESSAGE_API)
-          .query({
-            clientkey: IRKIT_CLIENT_KEY
-            deviceid: IRKIT_DEVICE_ID
-            message: AIRCON_COLD, LIGHT_OFF})
-          .post() (err, res, body) ->
-            robot.send {room: "#{IRKIT_OWNER_01}"}, "冷房いれておいたよ"
-      , () ->
-        #normalTempCallback
-        null
-    else
-      null
-  , null, true, "Asia/Tokyo"
+#  new cron '00 00 20 * * 0-6', () ->
+#    if AIRCON_FUNC is "on"
+#      getTemperature () ->
+#        #tooColdCallback
+#        robot.http(IRKIT_MESSAGE_API)
+#          .query({
+#            clientkey: IRKIT_CLIENT_KEY
+#            deviceid: IRKIT_DEVICE_ID
+#            message: AIRCON_HOT, LIGHT_OFF,})
+#          .post() (err, res, body) ->
+#            robot.send {room: "#{IRKIT_OWNER_01}"}, "暖房いれておいたよ"
+#		  
+#      , () ->
+#        #tooHotCallback
+#        robot.http(IRKIT_MESSAGE_API)
+#          .query({
+#            clientkey: IRKIT_CLIENT_KEY
+#            deviceid: IRKIT_DEVICE_ID
+#            message: AIRCON_COLD, LIGHT_OFF})
+#          .post() (err, res, body) ->
+#            robot.send {room: "#{IRKIT_OWNER_01}"}, "冷房いれておいたよ"
+#      , () ->
+#        #normalTempCallback
+#        null
+#    else
+#      null
+#  , null, true, "Asia/Tokyo"
 
-  new cron '00 15 08 * * 1-5', () ->
+  new cron '00 30 08 * * 1-5', () ->
     isHoliday () ->
       null
     , () ->
@@ -439,7 +439,7 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
         .query({
           clientkey: IRKIT_CLIENT_KEY
           deviceid: IRKIT_DEVICE_ID
-          message: AIRCON_OFF})
+          message: AIRCON_OFF, LIGHT_OFF})
         .post() (err, res, body) ->
           null
 #          robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ会社いく時間だぞ。早く出なよ。"
@@ -467,7 +467,7 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
           .query({
             clientkey: IRKIT_CLIENT_KEY
             deviceid: IRKIT_DEVICE_ID
-            message: AIRCON_OFF})
+            message: AIRCON_OFF, LIGHT_OFF})
           .post() (err, res, body) ->
             null
             robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ寝た方がよくない？おやすみ！"
@@ -477,17 +477,17 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
           .query({
             clientkey: IRKIT_CLIENT_KEY
             deviceid: IRKIT_DEVICE_ID
-            message: AIRCON_DRY})
+            message: AIRCON_OFF, LIGHT_OFF})
           .post() (err, res, body) ->
             null
-            robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ寝た方がよくない？エアコンは除湿にしておくわ。"
+            robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ寝た方がよくない？おやすみ！"
       , () ->
         #normalTempCallback
         robot.http(IRKIT_MESSAGE_API)
           .query({
             clientkey: IRKIT_CLIENT_KEY
             deviceid: IRKIT_DEVICE_ID
-            message: AIRCON_OFF})
+            message: AIRCON_OFF, LIGHT_OFF})
           .post() (err, res, body) ->
             null
             robot.send {room: "#{IRKIT_OWNER_01}"}, "そろそろ寝た方がよくない？おやすみ！"
