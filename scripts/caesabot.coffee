@@ -271,9 +271,9 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
   robot.respond /weather/i, (msg) ->
     getWeather (weathers) ->
       console.log(weathers)
-      message = "今日の天気は#{weathers[0]['telop']}ですね。"
+      message = "今日の天気は#{weathers[0]['telop']}です。"
       message += "最高気温は#{weathers[0]['maxtemp']}度だそうです。" if weathers[0]['maxtemp']?
-      message += "\nちなみに明日は#{weathers[1]['telop']}になるみたいですよ。"
+      message += "\nちなみに明日は#{weathers[1]['telop']}になるみたいです。"
       msg.send message
 
   robot.respond /temp/i, (msg) ->
