@@ -6,13 +6,7 @@
 #
 # Configuration:
 #   You need to set following environment variables
-#     HUBOT_SLACK_TOKEN=xoxb-140553424631-rm5VnMFFD8krFmRiNCgXccRi,xoxp-129507342901-129427789794-140519155040-e068be98ce11b5ab77f4701fe8a5aff5
-#     HUBOT_IRKIT_CLIENT_KEY=96D28D0032814BF99A1DBD5BBE3372BF
-#     HUBOT_IRKIT_DEVICE_ID=3A28142C6FBF4BCCA747F51FDDF0AC8E
-#     HUBOT_IRKIT_OWNER_01=shuhei
-#     HUBOT_TEMPERATURE_API_KEY=39574543179312f2cdc8b328ec4f108d
-#     HUBOT_IRKIT_AIRCON_FUNC=on
-#
+
 # Commands:
 #   sarubo help          -- Display this help
 #   sarubo ping          -- Check whether a bot is alive
@@ -96,19 +90,19 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       if msg.message.user.name is IRKIT_OWNER_01
         sw = msg.match[1]
         if sw is "cold"
-          postIRKit msg, AIRCON_COLD, "冷房モードでエアコンつけたよ"
+          postIRKit msg, AIRCON_COLD, "冷房モードでエアコンを付けました。"
         else if sw is "dry"
-          postIRKit msg, AIRCON_DRY, "除湿モードでエアコンつけたよ"
+          postIRKit msg, AIRCON_DRY, "除湿モードでエアコンを付けました。"
         else if sw is "hot"
-          postIRKit msg, AIRCON_HOT, "暖房モードでエアコンつけたよ"
+          postIRKit msg, AIRCON_HOT, "暖房モードでエアコンを付けました。"
         else if sw is "off"
-          postIRKit msg, AIRCON_OFF, "エアコン消しといたよ"
+          postIRKit msg, AIRCON_OFF, "エアコンを停止しました。"
         else
-          postIRKit msg, null, "ちょっと何言ってるかよくわからん"
+          postIRKit msg, null, "すみません、対応できません。"
       else
-        msg.reply "Sorry, this command is only for <@#{IRKIT_OWNER_01}>."
+        msg.reply "ユーザが異なるようです。使用できません。"
     else if AIRCON_FUNC is "off"
-    	msg.reply "今はそれ使えないわ"
+    	msg.reply "AIRCON_FUNCが設定されていないようです。"
  
  
  
@@ -116,36 +110,36 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
       if msg.message.user.name is IRKIT_OWNER_01
         sw = msg.match[1]
         if sw is "on"
-          postIRKit msg, LIGHT_ON, "照明つけたで"
+          postIRKit msg, LIGHT_ON, "照明を付けました。"
         else if sw is "off"
-          postIRKit msg, LIGHT_OFF, "照明消したで"
+          postIRKit msg, LIGHT_OFF, "照明を消しました。"
         else
-          postIRKit msg, null, "ちょっと何言ってるかよくわからん"
+          postIRKit msg, null, "すみません、対応できません。"
       else
-        msg.reply "Sorry, this command is only for <@#{IRKIT_OWNER_01}>."
+        msg.reply "ユーザが異なるようです。使用できません。"
 
 
   robot.respond /tv (power|nhk|tbs|tokyo|asahi|fuji|mx|.*)/, (msg) ->
     if msg.message.user.name is IRKIT_OWNER_01
       sw = msg.match[1]
       if sw is "power"
-        postIRKit msg, TV_POWER, "テレビの電源ボタン押しちゃったわ"
+        postIRKit msg, TV_POWER, "テレビの電源を押しました。"
       else if sw is "nhk"
-        postIRKit msg, TV_NHK, "NHKにチャンネル変えたわ"
+        postIRKit msg, TV_NHK, "NHKにチャンネル変えました。"
       else if sw is "tbs"
-        postIRKit msg, TV_TBS, "TBSにチャンネル変えたわ"
+        postIRKit msg, TV_TBS, "TBSにチャンネル変えました。"
       else if sw is "tokyo"
-        postIRKit msg, TV_TOKYO, "テレ東にチャンネル変えたわ"
+        postIRKit msg, TV_TOKYO, "テレ東にチャンネル変えました。"
       else if sw is "asahi"
-        postIRKit msg, TV_ASAHI, "テレ朝にチャンネル変えたわ"
+        postIRKit msg, TV_ASAHI, "テレ朝にチャンネル変えました。"
       else if sw is "fuji"
-        postIRKit msg, TV_FUJI, "フジテレビにチャンネル変えたわ"
+        postIRKit msg, TV_FUJI, "フジテレビにチャンネル変えました。"
       else if sw is "mx"
-        postIRKit msg, TV_MX, "TOKYO MXにチャンネル変えたわ"
+        postIRKit msg, TV_MX, "TOKYO MXにチャンネル変えました。"
       else
-        postIRKit msg, null, "そのチャンネルは知らん"
+        postIRKit msg, null, "すみません、対応できません"
     else
-      msg.reply "Sorry, this command is only for <@#{IRKIT_OWNER_01}>."
+      msg.reply "ユーザが異なるようです。使用できません。"
 
   robot.respond /ping(.*)/, (msg) ->
     if msg.match[1].length < 1
@@ -278,12 +272,12 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
 
   robot.respond /temp/i, (msg) ->
     getCurrentTemp (currentTemp) ->
-      msg.send "今の東京の気温は、#{currentTemp}℃です。"
+      msg.send "今の立川の気温は、#{currentTemp}℃です。"
 
   # example for scraping
   robot.respond /yahoo-news/i, (msg) ->
     getYahooNews (items) ->
-      msg.send "Yahoo Newsですか？どうぞ。詳細は自分でチェックしてくださいね。"
+      msg.send "Yahoo Newsになります。どうぞ。詳細は自分でチェックしてください。"
       for item in items
         msg.send "・#{item}"
 
@@ -297,7 +291,7 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
   robot.respond /train/i, (msg) ->
     getDelayedTrain (trains) ->
       if trains.length > 0
-        msg.send "遅れてる電車ですか？こちらです。"
+        msg.send "電車運行状況です。"
         for train in trains
           msg.send "・#{train}"
       else
@@ -351,7 +345,7 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
     params = msg.match[1].trim().split(" ")
     title = params[0]
     items = params.slice(1).join(" ").split(",")
-    msg.send "#{title}の投票するよ"
+    msg.send "#{title}の投票をします。"
     msg.send "集計するときは-1を忘れずに(caesabotを除く)"
     msg.send "-----------------------------------------"
     postMessages msg, items
@@ -371,11 +365,12 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
 
 
   # cron
- # new cron '00 00 24 * * 0-6', () ->
- #     robot.send {room: "#general"}, "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
- # , null, true, "Asia/Tokyo"
-
-  new cron '00 00 07 * * 0-6', () ->
+  #new cron '00 33 23 * * 0-6', () ->
+  #    msg.send "今日は金曜日ですし、そろそろ帰りましょう。よい週末を！"
+  #, null, true, "Asia/Tokyo"
+  
+	
+  new cron '00 12 00 * * 0-6', () ->
     if AIRCON_FUNC is "on"
       getTemperature () ->
         #tooColdCallback
@@ -385,7 +380,7 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
             deviceid: IRKIT_DEVICE_ID
             message: LIGHT_ON})
           .post() (err, res, body) ->
-            robot.send {room: "#{IRKIT_OWNER_01}"}, "おはようございます"
+            robot.send {room: "#{IRKIT_OWNER_01}"}, "おはようございます。"
       , () ->
         #tooHotCallback
         robot.http(IRKIT_MESSAGE_API)
@@ -394,7 +389,7 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
             deviceid: IRKIT_DEVICE_ID
             message: LIGHT_ON})
           .post() (err, res, body) ->
-            robot.send {room: "#{IRKIT_OWNER_01}"}, "おはようございます"
+            robot.send {room: "#{IRKIT_OWNER_01}"}, "おはようございます。"
       , () ->
         #normalTempCallback
         null
@@ -459,7 +454,7 @@ vote [TITLE] [ITEM1],[ITEM2],[ITEM3] -- Create vote template
 #  , null, true, "Asia/Tokyo"
 
 
-  new cron '00 00 24 * * 0-6', () ->
+  new cron '00 00 01 * * 0-6', () ->
     if AIRCON_FUNC is "on"
       getTemperature () ->
         #tooColdCallback
